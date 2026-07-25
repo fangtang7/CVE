@@ -20,7 +20,7 @@ MCMS (ms-mcms) <= 6.2.0
 
 Front-end accepts parameter points:
 
-![image-20260724111952531](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260724111952531.png)
+![image-20260724111952531](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片1.2rvu819ojh.webp)
 
 ![image-20260724114530639](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260724114530639.png)
 
