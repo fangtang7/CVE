@@ -36,9 +36,8 @@ Executing the delete database statement, test724 was successfully deleted: /cms/
 ![image-20260724112404752](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片4.26m6lqgevp.webp)
 
 In the CategoryBizImpl.java file, user parameters are injected into the FreeMarker template, which renders the final SQL!
-[img](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片5.2oc8abhwdj.webp)
 
- 
+[img](https://github.com/fangtang7/picx-images-hosting/raw/master/mcms/图片5.2oc8abhwdj.webp)
 
  
 
