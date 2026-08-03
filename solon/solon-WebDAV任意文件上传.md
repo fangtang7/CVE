@@ -28,11 +28,11 @@ Solon 框架[Solon v4.0.4](https://gitee.com/opensolon/solon/releases/tag/v4.0.4
 
 直接拼接路径，无任何 ../ 过滤
 
-![image-20260803232008631](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803232008631.png)
+![image-20260803232008631](https://github.com/fangtang7/picx-images-hosting/raw/master/Solon/image-20260803232008631.5c1oy3isfo.webp)
 
 行号: 140-143 — putFile() 方法接收用户请求的路径和文件内容
 
-![image-20260803232034997](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803232034997.png)
+![image-20260803232034997](https://github.com/fangtang7/picx-images-hosting/raw/master/Solon/image-20260803232034997.67y6djsvzc.webp)
 
 **请求包**：
 
@@ -42,4 +42,4 @@ Host: localhost:8085
 Connection: keep-alive
 ```
 
-![image-20260803232243672](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803232243672.png)
+![image-20260803232243672](https://github.com/fangtang7/picx-images-hosting/raw/master/Solon/image-20260803232243672.26m6z5p4zd.webp)
