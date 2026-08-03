@@ -30,7 +30,7 @@ DocSys-master（最新版本）
 
 用户请求参数文件名String imgName和 文件内容MultipartFile file直接来自 HTTP 请求，用户可控
 
-![image-20260803194710833](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803194710833.png)
+![image-20260803194710833](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803194710833.2dpeudmzqb.webp)
 
 行号: 2081-2088 — imgName 直接赋值给 fileName，无任何路径检测
 
@@ -38,7 +38,7 @@ DocSys-master（最新版本）
 
 行号: 2097 — 文件写入
 
-![image-20260803195014637](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803195014637.png)
+![image-20260803195014637](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803195014637.6f1e8rrdzl.webp)
 
 ---
 
@@ -63,7 +63,7 @@ test2026
 ------WebKitFormBoundary--
 ```
 
-![image-20260803183835811](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260803183835811.png)
+![image-20260803183835811](https://github.com/fangtang7/picx-images-hosting/raw/master/DocSys/image-20260803183835811.96aggudw3o.webp)
 
 成功上传文件到/tmp/test2026.txt,可上传至web目录下获取网站权限
 
