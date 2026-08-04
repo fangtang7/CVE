@@ -48,7 +48,7 @@ Connection: keep-alive
 
 ---
 
-![image-20260803214433922]([https://github.com/fangtang7/picx-images-hosting/raw/master/DWSurvey/image-20260803214243516.7p4bf7fquq.webp](https://github.com/fangtang7/picx-images-hosting/raw/master/DWSurvey/image-20260803214433922.51ev4umgcu.webp))
+![image-20260803214433922](https://github.com/fangtang7/picx-images-hosting/raw/master/DWSurvey/image-20260803214433922.51ev4umgcu.webp)
 
 ### Vulnerability 2: Authentication bypass in /api/dwsurvey/up/** leads to unauthorized file upload
 
