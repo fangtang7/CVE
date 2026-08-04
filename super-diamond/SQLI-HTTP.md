@@ -31,7 +31,7 @@ Cookie: JSESSIONID=cgrth15xu9s91ley5v850pi4m
 
 The server returns all configuration data, proving the SQL injection exists.
 
-![image-20260804224615152](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260804224615152.png)
+![image-20260804224615152](https://github.com/fangtang7/picx-images-hosting/raw/master/Super-Diamond/image-20260804224615152.5c1oziq0sn.webp)
 
 ** Extract database version**
 
@@ -43,7 +43,7 @@ Cookie: JSESSIONID=cgrth15xu9s91ley5v850pi4m
 
 Response: `1.4.200`
 
-![image-20260804224732187](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260804224732187.png)
+![image-20260804224732187](https://github.com/fangtang7/picx-images-hosting/raw/master/Super-Diamond/image-20260804224732187.1763netg1i.webp)
 
 **Extract admin password hash**
 
@@ -55,8 +55,8 @@ Cookie: JSESSIONID=cgrth15xu9s91ley5v850pi4m
 
 Response: `670b14728ad9902aecba32e22fa4f6bd` (MD5 unsalted)
 
-![image-20260804224710290](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260804224710290.png)
+![image-20260804224710290](https://github.com/fangtang7/picx-images-hosting/raw/master/Super-Diamond/image-20260804224710290.7ehhnkpo7v.webp)
 
 In `ConfigDaoImpl.java`, user parameters are injected into the SQL IN clause via string concatenation:
 
-![image-20260804225055550](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20260804225055550.png)
+![image-20260804225055550](https://github.com/fangtang7/picx-images-hosting/raw/master/Super-Diamond/image-20260804225055550.2h90tqcfno.webp)
