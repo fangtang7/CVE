@@ -1,44 +1,44 @@
-# Solon WebDAV 任意文件读取漏洞报告
+# Solon WebDAV Arbitrary File Reading Vulnerability Report
 
-## 漏洞描述
+## Vulnerability Description
 
-Solon 框架的 `solon-web-webdav` 模块提供了 WebDAV 文件系统支持。`LocalFileSystem` 实现中的 `realPath()` 方法直接将用户可控的路径参数与根路径拼接，未对 `../` 进行任何过滤。攻击者可通过路径遍历读取、写入和删除服务器上的任意文件。
-
----
-
-## 影响版本
-
-Solon 框架[Solon v4.0.4](https://gitee.com/opensolon/solon/releases/tag/v4.0.4)  最新版
-
-（所有使用 solon-web-webdav 模块的版本）
+The `solon-web-webdav` module of the Solon framework provides support for the WebDAV file system. The `realPath()` method in the `LocalFileSystem` implementation directly concatenates the user-controllable path parameters with the root path, without any filtering of `../`. An attacker can traverse the path to read, write, and delete arbitrary files on the serve。
 
 ---
 
-## 利用条件
+## Affected Versions
 
-- 应用使用了 `solon-web-webdav` 模块
-- WebDAV 端点暴露在外
+The latest version of the Solon framework [Solon v4.0.4](https://gitee.com/opensolon/solon/releases/tag/v4.0.4)
+
+（All versions using the solon-web-webdav module）
 
 ---
 
-## 漏洞复现
+## Utilize conditions
 
-**文件路径**：`solon-projects/solon-web/solon-web-webdav/src/main/java/org/noear/solon/web/webdav/impl/LocalFileSystem.java`
-**行号**：47-52
+- The application utilizes the `solon-web-webdav` module
+- - the WebDAV endpoint is exposed
 
-直接拼接路径，无任何 ../ 过滤
+---
+
+## Vulnerability Reproduction
+
+**File path**：`solon-projects/solon-web/solon-web-webdav/src/main/java/org/noear/solon/web/webdav/impl/LocalFileSystem.java`
+**line number**：47-52
+
+Direct concatenation of paths, without any filtering of ../
 
 ![image-20260803231237499](https://github.com/fangtang7/picx-images-hosting/raw/master/Solon/image-20260803231237499.6po824pc0v.webp)
 
-行号: 89-96 — fileInfo() 方法接收用户请求的路径
+Line numbers: 89-96 — The fileInfo() method receives the path requested by the user
 
 ![image-20260803231339483](https://github.com/fangtang7/picx-images-hosting/raw/master/Solon/image-20260803231339483.5flavt81vd.webp)
 
-行号: 129-131 — FileUtil.getInputStream() 读取文件并返回流
+Line numbers: 129-131 — FileUtil.getInputStream() reads a file and returns a stream
 
 ![image-20260803231432875](https://github.com/fangtang7/picx-images-hosting/raw/master/Solon/image-20260803231432875.7p4bfatagn.webp)
 
-**请求包**：
+**Request package**：
 
 ```
 GET /../../../../../../../../windows/win.ini HTTP/1.1
