@@ -1,4 +1,4 @@
-# jetlinks-community SSRF + Arbitrary File Read Vulnerability Report
+# jetlinks-community SSRF Vulnerability Report
 
 ## Introduction to Vulnerabilities
 
