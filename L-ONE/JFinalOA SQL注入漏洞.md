@@ -10,7 +10,7 @@ After logging in, the attacker can execute error injection, UNION injection, and
 
 ## Affected Versions
 
-JFinalOA (L-ONE-v1.0) （latest version）
+L-ONE-v1.0
 
 ## Utilize conditions
 
