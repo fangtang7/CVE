@@ -8,7 +8,7 @@ The Distribution Management system is composed of 4 modules (dist-primary, dist-
 
 ## Affected Versions
 
-Distribution Management (latest version) — All known versions
+Distribution Management v1.0.0
 
 ---
 
